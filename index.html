@@ -1,109 +1,142 @@
 <!DOCTYPE html>
-<html lang="sq">
+<html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
   <title>Tempesto Shop</title>
 
   <style>
     * {
-      box-sizing: border-box;
       margin: 0;
       padding: 0;
+      box-sizing: border-box;
       font-family: Arial, sans-serif;
     }
 
     body {
-      background: #0b0b12;
+      background: #070b14;
       color: white;
     }
 
     header {
-      padding: 20px;
+      width: 100%;
+      padding: 18px 7%;
       display: flex;
       justify-content: space-between;
       align-items: center;
-      background: #11111b;
-      border-bottom: 1px solid #252535;
+      background: #0b1120;
+      border-bottom: 1px solid #172033;
+      position: sticky;
+      top: 0;
+      z-index: 100;
     }
 
     .logo {
       font-size: 24px;
       font-weight: bold;
-    }
-
-    .logo span {
-      color: #8b5cf6;
+      color: #3b82f6;
     }
 
     .cart {
-      background: #8b5cf6;
-      padding: 10px 16px;
-      border-radius: 10px;
+      background: #2563eb;
       color: white;
-      text-decoration: none;
+      border: none;
+      padding: 10px 17px;
+      border-radius: 8px;
       font-weight: bold;
+      cursor: pointer;
     }
 
     .hero {
       text-align: center;
       padding: 80px 20px;
-      background: linear-gradient(135deg, #11111b, #191329);
+      background:
+        radial-gradient(circle at top, #102452 0%, #070b14 55%);
     }
 
     .hero h1 {
-      font-size: 42px;
+      font-size: 45px;
       margin-bottom: 15px;
     }
 
     .hero h1 span {
-      color: #8b5cf6;
+      color: #3b82f6;
     }
 
     .hero p {
-      color: #aaa;
+      color: #9ca3af;
       font-size: 18px;
-      margin-bottom: 30px;
+      margin-bottom: 28px;
     }
 
-    .button {
+    .shop-btn {
       display: inline-block;
-      background: #8b5cf6;
+      background: #2563eb;
       color: white;
-      padding: 14px 25px;
-      border-radius: 10px;
+      padding: 13px 25px;
+      border-radius: 9px;
       text-decoration: none;
       font-weight: bold;
     }
 
     .section {
-      padding: 50px 20px;
-      max-width: 1100px;
-      margin: auto;
+      padding: 50px 7%;
     }
 
-    .section h2 {
-      margin-bottom: 25px;
+    .section-title {
       font-size: 28px;
+      margin-bottom: 25px;
+    }
+
+    .search {
+      width: 100%;
+      max-width: 500px;
+      padding: 14px;
+      margin-bottom: 30px;
+      background: #0b1120;
+      border: 1px solid #1e293b;
+      border-radius: 8px;
+      color: white;
+      outline: none;
+    }
+
+    .search:focus {
+      border-color: #3b82f6;
     }
 
     .categories {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
       gap: 15px;
     }
 
     .category {
-      background: #151520;
+      background: #0b1120;
+      border: 1px solid #172033;
       padding: 25px;
+      border-radius: 12px;
       text-align: center;
-      border-radius: 15px;
-      border: 1px solid #252535;
+      transition: 0.3s;
     }
 
-    .category .icon {
-      font-size: 35px;
+    .category:hover {
+      transform: translateY(-4px);
+      border-color: #2563eb;
+    }
+
+    .category-icon {
+      font-size: 30px;
       margin-bottom: 10px;
+    }
+
+    .category h3 {
+      margin-bottom: 7px;
+    }
+
+    .category p {
+      color: #9ca3af;
+      font-size: 14px;
     }
 
     .products {
@@ -113,51 +146,86 @@
     }
 
     .product {
-      background: #151520;
-      border-radius: 15px;
-      padding: 20px;
-      border: 1px solid #252535;
+      background: #0b1120;
+      border: 1px solid #172033;
+      border-radius: 12px;
+      overflow: hidden;
+      transition: 0.3s;
+    }
+
+    .product:hover {
+      transform: translateY(-5px);
+      border-color: #2563eb;
     }
 
     .product-image {
       height: 150px;
-      background: #222233;
-      border-radius: 10px;
       display: flex;
       align-items: center;
       justify-content: center;
+      background: linear-gradient(135deg, #111827, #172554);
       font-size: 50px;
-      margin-bottom: 15px;
     }
 
-    .product h3 {
+    .product-info {
+      padding: 18px;
+    }
+
+    .product-info h3 {
       margin-bottom: 8px;
     }
 
-    .price {
-      color: #a78bfa;
-      font-size: 20px;
-      font-weight: bold;
-      margin: 15px 0;
+    .product-info p {
+      color: #9ca3af;
+      font-size: 14px;
+      margin-bottom: 15px;
     }
 
-    .buy {
-      display: block;
-      text-align: center;
-      background: #8b5cf6;
-      color: white;
-      padding: 12px;
-      border-radius: 8px;
-      text-decoration: none;
+    .price {
+      color: #60a5fa;
+      font-size: 20px;
       font-weight: bold;
+      margin-bottom: 15px;
+    }
+
+    .buy-btn {
+      width: 100%;
+      padding: 11px;
+      border: none;
+      border-radius: 8px;
+      background: #2563eb;
+      color: white;
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+    .buy-btn:hover,
+    .shop-btn:hover,
+    .cart:hover {
+      background: #1d4ed8;
     }
 
     footer {
       text-align: center;
       padding: 30px;
-      color: #777;
-      border-top: 1px solid #252535;
-      margin-top: 30px;
+      margin-top: 40px;
+      background: #0b1120;
+      border-top: 1px solid #172033;
+      color: #6b7280;
+    }
+
+    @media (max-width: 600px) {
+      .hero h1 {
+        font-size: 34px;
+      }
+
+      .hero {
+        padding: 60px 15px;
+      }
+
+      .section {
+        padding: 40px 5%;
+      }
     }
   </style>
 </head>
@@ -165,77 +233,166 @@
 <body>
 
   <header>
-    <div class="logo">Tempesto<span>Shop</span></div>
-    <a href="#" class="cart">🛒 Cart</a>
+    <div class="logo">⚡ TempestoShop</div>
+
+    <button class="cart">
+      🛒 Cart (<span id="cartCount">0</span>)
+    </button>
   </header>
+
 
   <section class="hero">
     <h1>Welcome to <span>Tempesto Shop</span></h1>
-    <p>Digital gaming products, fast and simple.</p>
-    <a href="#products" class="button">Browse Products</a>
+
+    <p>
+      Digital gaming products. Fast, simple and secure.
+    </p>
+
+    <a href="#products" class="shop-btn">
+      Browse Products
+    </a>
   </section>
+
 
   <section class="section">
-    <h2>🎮 Categories</h2>
+
+    <h2 class="section-title">Categories</h2>
 
     <div class="categories">
+
       <div class="category">
-        <div class="icon">👤</div>
-        <h3>Game Accounts</h3>
+        <div class="category-icon">🎮</div>
+        <h3>Game Products</h3>
+        <p>Gaming products and digital items.</p>
       </div>
 
       <div class="category">
-        <div class="icon">💰</div>
+        <div class="category-icon">💎</div>
         <h3>Game Currency</h3>
+        <p>Digital currency and in-game items.</p>
       </div>
 
       <div class="category">
-        <div class="icon">🎁</div>
+        <div class="category-icon">🔥</div>
         <h3>Digital Items</h3>
+        <p>Special digital gaming products.</p>
       </div>
 
       <div class="category">
-        <div class="icon">🔥</div>
+        <div class="category-icon">⭐</div>
         <h3>Best Sellers</h3>
+        <p>Our most popular products.</p>
       </div>
+
     </div>
+
   </section>
+
 
   <section class="section" id="products">
-    <h2>🔥 Featured Products</h2>
 
-    <div class="products">
+    <h2 class="section-title">Featured Products</h2>
 
-      <div class="product">
+    <input
+      type="text"
+      class="search"
+      id="search"
+      placeholder="🔎 Search products..."
+    >
+
+    <div class="products" id="productList">
+
+      <div class="product" data-name="Digital Gaming Product">
         <div class="product-image">🎮</div>
-        <h3>Gaming Account</h3>
-        <p>Digital gaming account</p>
-        <div class="price">1,000 ALL</div>
-        <a href="#" class="buy">Buy Now</a>
+
+        <div class="product-info">
+          <h3>Digital Gaming Product</h3>
+          <p>High-quality digital gaming product.</p>
+
+          <div class="price">1,000 ALL</div>
+
+          <button class="buy-btn" onclick="addToCart()">
+            Add to Cart
+          </button>
+        </div>
       </div>
 
-      <div class="product">
+
+      <div class="product" data-name="Game Currency">
         <div class="product-image">💎</div>
-        <h3>Game Currency</h3>
-        <p>Digital currency</p>
-        <div class="price">500 ALL</div>
-        <a href="#" class="buy">Buy Now</a>
+
+        <div class="product-info">
+          <h3>Game Currency</h3>
+          <p>Digital currency product.</p>
+
+          <div class="price">500 ALL</div>
+
+          <button class="buy-btn" onclick="addToCart()">
+            Add to Cart
+          </button>
+        </div>
       </div>
 
-      <div class="product">
-        <div class="product-image">🎁</div>
-        <h3>Digital Item</h3>
-        <p>Instant digital delivery</p>
-        <div class="price">750 ALL</div>
-        <a href="#" class="buy">Buy Now</a>
+
+      <div class="product" data-name="Digital Item">
+        <div class="product-image">🔥</div>
+
+        <div class="product-info">
+          <h3>Digital Item</h3>
+          <p>Special digital gaming item.</p>
+
+          <div class="price">750 ALL</div>
+
+          <button class="buy-btn" onclick="addToCart()">
+            Add to Cart
+          </button>
+        </div>
       </div>
 
     </div>
+
   </section>
 
+
   <footer>
-    © 2026 Tempesto Shop — All rights reserved.
+    © 2026 Tempesto Shop — All Rights Reserved.
   </footer>
+
+
+  <script>
+
+    let cartCount = 0;
+
+    function addToCart() {
+      cartCount++;
+
+      document.getElementById("cartCount").textContent = cartCount;
+
+      alert("Product added to cart!");
+    }
+
+
+    document.getElementById("search").addEventListener("input", function() {
+
+      const searchValue = this.value.toLowerCase();
+
+      const products = document.querySelectorAll(".product");
+
+      products.forEach(function(product) {
+
+        const name = product.dataset.name.toLowerCase();
+
+        if (name.includes(searchValue)) {
+          product.style.display = "block";
+        } else {
+          product.style.display = "none";
+        }
+
+      });
+
+    });
+
+  </script>
 
 </body>
 </html>
