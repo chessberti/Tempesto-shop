@@ -3,90 +3,403 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Tempesto Shop</title>
+
+  <title>Tempesto Shop | Free Fire Gaming Shop</title>
 
   <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: Arial, Helvetica, sans-serif;
+    }
+
+    body {
+      background: #050816;
+      color: white;
+      min-height: 100vh;
+    }
+
+    /* HEADER */
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      background: rgba(5, 8, 22, 0.95);
+      border-bottom: 1px solid #1e293b;
+      backdrop-filter: blur(10px);
+    }
+
+    .navbar {
+      max-width: 1200px;
+      margin: auto;
+      padding: 18px 25px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .logo {
+      font-size: 25px;
+      font-weight: 900;
+      color: #ff7a00;
+      text-decoration: none;
+    }
+
+    .logo span {
+      color: white;
+    }
+
+    .cart {
+      background: #ff7a00;
+      color: white;
+      padding: 10px 18px;
+      border-radius: 8px;
+      font-weight: bold;
+      cursor: pointer;
+      border: none;
+      transition: 0.3s;
+    }
+
+    .cart:hover {
+      background: #ff9500;
+      transform: translateY(-2px);
+    }
+
+    /* HERO */
+    .hero {
+      min-height: 520px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 80px 20px;
+      background:
+        radial-gradient(circle at center, rgba(255, 122, 0, 0.18), transparent 40%),
+        linear-gradient(135deg, #080b1a, #0b1225);
+    }
+
+    .hero-content {
+      max-width: 800px;
+    }
+
+    .hero-badge {
+      display: inline-block;
+      background: rgba(255, 122, 0, 0.12);
+      border: 1px solid #ff7a00;
+      color: #ff9500;
+      padding: 8px 15px;
+      border-radius: 50px;
+      font-size: 13px;
+      font-weight: bold;
+      margin-bottom: 20px;
+    }
+
+    .hero h1 {
+      font-size: 58px;
+      line-height: 1.1;
+      margin-bottom: 20px;
+    }
+
+    .hero h1 span {
+      color: #ff7a00;
+    }
+
+    .hero p {
+      color: #aeb8cc;
+      font-size: 18px;
+      margin-bottom: 30px;
+    }
+
+    .shop-btn {
+      display: inline-block;
+      padding: 14px 28px;
+      background: #ff7a00;
+      color: white;
+      text-decoration: none;
+      border-radius: 9px;
+      font-weight: bold;
+      transition: 0.3s;
+      box-shadow: 0 0 25px rgba(255, 122, 0, 0.25);
+    }
+
+    .shop-btn:hover {
+      background: #ff9500;
+      transform: translateY(-3px);
+    }
+
+    /* SECTION */
+    .section {
+      max-width: 1200px;
+      margin: auto;
+      padding: 70px 25px;
+    }
+
+    .section-title {
+      text-align: center;
+      margin-bottom: 40px;
+    }
+
+    .section-title h2 {
+      font-size: 34px;
+      margin-bottom: 10px;
+    }
+
+    .section-title p {
+      color: #8792a8;
+    }
+
+    /* CATEGORIES */
+    .categories {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 20px;
+    }
+
+    .category {
+      background: #0b1120;
+      border: 1px solid #1b263b;
+      border-radius: 15px;
+      padding: 30px 20px;
+      text-align: center;
+      transition: 0.3s;
+    }
+
+    .category:hover {
+      transform: translateY(-6px);
+      border-color: #ff7a00;
+      box-shadow: 0 10px 30px rgba(255, 122, 0, 0.1);
+    }
+
+    .category-icon {
+      font-size: 45px;
+      margin-bottom: 15px;
+    }
+
+    .category h3 {
+      margin-bottom: 10px;
+    }
+
+    .category p {
+      color: #8994a8;
+      font-size: 14px;
+      line-height: 1.5;
+    }
+
+    /* SEARCH */
+    .search-box {
+      max-width: 500px;
+      margin: 0 auto 40px;
+    }
+
+    .search-box input {
+      width: 100%;
+      padding: 15px 18px;
+      background: #0b1120;
+      border: 1px solid #26334a;
+      border-radius: 10px;
+      outline: none;
+      color: white;
+      font-size: 15px;
+    }
+
+    .search-box input:focus {
+      border-color: #ff7a00;
+      box-shadow: 0 0 15px rgba(255, 122, 0, 0.12);
+    }
+
+    /* PRODUCTS */
     .products {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-      gap: 20px;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 25px;
     }
 
     .product {
       background: #0b1120;
-      border: 1px solid #172033;
-      border-radius: 12px;
+      border: 1px solid #1b263b;
+      border-radius: 15px;
       overflow: hidden;
       transition: 0.3s;
     }
 
     .product:hover {
-      transform: translateY(-5px);
-      border-color: #2563eb;
+      transform: translateY(-7px);
+      border-color: #ff7a00;
+      box-shadow: 0 15px 35px rgba(0, 0, 0, 0.35);
     }
 
     .product-image {
-  height: 150px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 60px;
-}
+      height: 190px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 75px;
+      background:
+        radial-gradient(circle, rgba(255, 122, 0, 0.18), transparent 55%),
+        #080d1b;
+    }
+
+    .product-info {
+      padding: 22px;
+    }
 
     .product-info h3 {
-      margin-bottom: 8px;
+      font-size: 20px;
+      margin-bottom: 10px;
     }
 
     .product-info p {
-      color: #9ca3af;
+      color: #8b96aa;
       font-size: 14px;
-      margin-bottom: 15px;
+      line-height: 1.5;
+      margin-bottom: 18px;
     }
 
     .price {
-      color: #60a5fa;
-      font-size: 20px;
-      font-weight: bold;
-      margin-bottom: 15px;
+      color: #ff9500;
+      font-size: 23px;
+      font-weight: 900;
+      margin-bottom: 18px;
     }
 
     .buy-btn {
       width: 100%;
-      padding: 11px;
+      padding: 13px;
       border: none;
-      border-radius: 8px;
-      background: #2563eb;
+      border-radius: 9px;
+      background: #ff7a00;
       color: white;
       font-weight: bold;
+      font-size: 15px;
       cursor: pointer;
+      transition: 0.3s;
     }
 
-    .buy-btn:hover,
-    .shop-btn:hover,
-    .cart:hover {
-      background: #1d4ed8;
+    .buy-btn:hover {
+      background: #ff9500;
+      transform: translateY(-2px);
     }
 
+    /* FREE FIRE */
+    .freefire {
+      margin-top: 20px;
+      padding: 55px 25px;
+      text-align: center;
+      border-radius: 20px;
+      background:
+        radial-gradient(circle at center, rgba(255, 122, 0, 0.2), transparent 50%),
+        #0b1120;
+      border: 1px solid #1f2a40;
+    }
+
+    .freefire h2 {
+      font-size: 35px;
+      margin-bottom: 15px;
+    }
+
+    .freefire h2 span {
+      color: #ff7a00;
+    }
+
+    .freefire p {
+      color: #929db0;
+      max-width: 650px;
+      margin: auto;
+      line-height: 1.6;
+    }
+
+    /* FOOTER */
     footer {
       text-align: center;
-      padding: 30px;
-      margin-top: 40px;
-      background: #0b1120;
-      border-top: 1px solid #172033;
-      color: #6b7280;
+      padding: 35px 20px;
+      margin-top: 50px;
+      background: #080c18;
+      border-top: 1px solid #1b263b;
+      color: #68748a;
+    }
+
+    footer strong {
+      color: #ff7a00;
+    }
+
+    /* MOBILE */
+    @media (max-width: 900px) {
+      .categories {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .products {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .hero h1 {
+        font-size: 45px;
+      }
     }
 
     @media (max-width: 600px) {
-      .hero h1 {
-        font-size: 34px;
+      .navbar {
+        padding: 15px;
+      }
+
+      .logo {
+        font-size: 21px;
+      }
+
+      .cart {
+        padding: 9px 13px;
+        font-size: 13px;
       }
 
       .hero {
-        padding: 60px 15px;
+        min-height: 450px;
+        padding: 60px 20px;
+      }
+
+      .hero h1 {
+        font-size: 36px;
+      }
+
+      .hero p {
+        font-size: 16px;
       }
 
       .section {
-        padding: 40px 5%;
+        padding: 50px 15px;
+      }
+
+      .categories {
+        grid-template-columns: 1fr 1fr;
+        gap: 12px;
+      }
+
+      .category {
+        padding: 22px 12px;
+      }
+
+      .category-icon {
+        font-size: 35px;
+      }
+
+      .category h3 {
+        font-size: 15px;
+      }
+
+      .category p {
+        font-size: 12px;
+      }
+
+      .products {
+        grid-template-columns: 1fr;
+      }
+
+      .section-title h2 {
+        font-size: 28px;
+      }
+
+      .freefire h2 {
+        font-size: 28px;
       }
     }
   </style>
@@ -94,56 +407,89 @@
 
 <body>
 
+  <!-- HEADER -->
   <header>
-    <div class="logo">⚡ TempestoShop</div>
+    <div class="navbar">
 
-    <button class="cart">
-      🛒 Cart (<span id="cartCount">0</span>)
-    </button>
+      <a href="#" class="logo">
+        ⚡ Tempesto<span>Shop</span>
+      </a>
+
+      <button class="cart">
+        🛒 Cart (<span id="cartCount">0</span>)
+      </button>
+
+    </div>
   </header>
 
 
+  <!-- HERO -->
   <section class="hero">
-    <h1>Welcome to <span>Tempesto Shop</span></h1>
 
-    <p>
-      Digital gaming products. Fast, simple and secure.
-    </p>
+    <div class="hero-content">
 
-    <a href="#products" class="shop-btn">
-      Browse Products
-    </a>
+      <div class="hero-badge">
+        🔥 FREE FIRE GAMING SHOP
+      </div>
+
+      <h1>
+        Welcome to <span>Tempesto Shop</span>
+      </h1>
+
+      <p>
+        Your gaming marketplace for Free Fire products,
+        digital items and game currency.
+      </p>
+
+      <a href="#products" class="shop-btn">
+        🛒 Browse Products
+      </a>
+
+    </div>
+
   </section>
 
 
+  <!-- CATEGORIES -->
   <section class="section">
 
-    <h2 class="section-title">Categories</h2>
+    <div class="section-title">
+      <h2>Categories</h2>
+      <p>Choose what you're looking for</p>
+    </div>
 
     <div class="categories">
 
       <div class="category">
         <div class="category-icon">🎮</div>
         <h3>Game Products</h3>
-        <p>Gaming products and digital items.</p>
+        <p>
+          Gaming products and digital items.
+        </p>
       </div>
 
       <div class="category">
         <div class="category-icon">💎</div>
         <h3>Game Currency</h3>
-        <p>Digital currency and in-game items.</p>
+        <p>
+          Diamonds and in-game currency.
+        </p>
       </div>
 
       <div class="category">
         <div class="category-icon">🔥</div>
         <h3>Digital Items</h3>
-        <p>Special digital gaming products.</p>
+        <p>
+          Special digital gaming products.
+        </p>
       </div>
 
       <div class="category">
         <div class="category-icon">⭐</div>
         <h3>Best Sellers</h3>
-        <p>Our most popular products.</p>
+        <p>
+          Our most popular products.
+        </p>
       </div>
 
     </div>
@@ -151,110 +497,340 @@
   </section>
 
 
+  <!-- PRODUCTS -->
   <section class="section" id="products">
 
-    <h2 class="section-title">Featured Products</h2>
+    <div class="section-title">
 
-    <input
-      type="text"
-      class="search"
-      id="search"
-      placeholder="🔎 Search products..."
-    >
+      <h2>🔥 Featured Products</h2>
+
+      <p>
+        Check out our latest gaming products
+      </p>
+
+    </div>
+
+
+    <!-- SEARCH -->
+    <div class="search-box">
+
+      <input
+        type="text"
+        id="search"
+        placeholder="🔎 Search products..."
+      >
+
+    </div>
+
 
     <div class="products" id="productList">
 
-      <div class="product" data-name="Digital Gaming Product">
-        <div class="product-image">🎮</div>
+
+      <!-- PRODUCT 1 -->
+      <div
+        class="product"
+        data-name="Free Fire Diamonds"
+      >
+
+        <div class="product-image">
+          💎
+        </div>
 
         <div class="product-info">
-          <h3>Digital Gaming Product</h3>
-          <p>High-quality digital gaming product.</p>
 
-          <div class="price">1,000 ALL</div>
+          <h3>
+            Free Fire Diamonds
+          </h3>
 
-          <button class="buy-btn" onclick="addToCart()">
-            Add to Cart
+          <p>
+            Free Fire diamonds for your account.
+            Fast and easy delivery.
+          </p>
+
+          <div class="price">
+            1,000 ALL
+          </div>
+
+          <button
+            class="buy-btn"
+            onclick="addToCart('Free Fire Diamonds')"
+          >
+            🛒 Add to Cart
           </button>
+
         </div>
+
       </div>
 
 
-      <div class="product" data-name="Game Currency">
-        <div class="product-image">💎</div>
+      <!-- PRODUCT 2 -->
+      <div
+        class="product"
+        data-name="Free Fire Account"
+      >
+
+        <div class="product-image">
+          🎮
+        </div>
 
         <div class="product-info">
-          <h3>Game Currency</h3>
-          <p>Digital currency product.</p>
 
-          <div class="price">500 ALL</div>
+          <h3>
+            Free Fire Account
+          </h3>
 
-          <button class="buy-btn" onclick="addToCart()">
-            Add to Cart
+          <p>
+            Gaming account with special items
+            and features.
+          </p>
+
+          <div class="price">
+            2,500 ALL
+          </div>
+
+          <button
+            class="buy-btn"
+            onclick="addToCart('Free Fire Account')"
+          >
+            🛒 Add to Cart
           </button>
+
         </div>
+
       </div>
 
 
-      <div class="product" data-name="Digital Item">
-        <div class="product-image">🔥</div>
+      <!-- PRODUCT 3 -->
+      <div
+        class="product"
+        data-name="Rare Digital Item"
+      >
+
+        <div class="product-image">
+          🔥
+        </div>
 
         <div class="product-info">
-          <h3>Digital Item</h3>
-          <p>Special digital gaming item.</p>
 
-          <div class="price">750 ALL</div>
+          <h3>
+            Rare Digital Item
+          </h3>
 
-          <button class="buy-btn" onclick="addToCart()">
-            Add to Cart
+          <p>
+            Special digital item for gamers
+            and collectors.
+          </p>
+
+          <div class="price">
+            750 ALL
+          </div>
+
+          <button
+            class="buy-btn"
+            onclick="addToCart('Rare Digital Item')"
+          >
+            🛒 Add to Cart
           </button>
+
         </div>
+
       </div>
+
+
+      <!-- PRODUCT 4 -->
+      <div
+        class="product"
+        data-name="Gaming Pack"
+      >
+
+        <div class="product-image">
+          🎁
+        </div>
+
+        <div class="product-info">
+
+          <h3>
+            Gaming Pack
+          </h3>
+
+          <p>
+            Special gaming bundle with
+            digital items.
+          </p>
+
+          <div class="price">
+            1,500 ALL
+          </div>
+
+          <button
+            class="buy-btn"
+            onclick="addToCart('Gaming Pack')"
+          >
+            🛒 Add to Cart
+          </button>
+
+        </div>
+
+      </div>
+
+
+      <!-- PRODUCT 5 -->
+      <div
+        class="product"
+        data-name="Premium Item"
+      >
+
+        <div class="product-image">
+          👑
+        </div>
+
+        <div class="product-info">
+
+          <h3>
+            Premium Item
+          </h3>
+
+          <p>
+            Premium digital gaming item
+            for your collection.
+          </p>
+
+          <div class="price">
+            2,000 ALL
+          </div>
+
+          <button
+            class="buy-btn"
+            onclick="addToCart('Premium Item')"
+          >
+            🛒 Add to Cart
+          </button>
+
+        </div>
+
+      </div>
+
+
+      <!-- PRODUCT 6 -->
+      <div
+        class="product"
+        data-name="Special Bundle"
+      >
+
+        <div class="product-image">
+          ⚡
+        </div>
+
+        <div class="product-info">
+
+          <h3>
+            Special Bundle
+          </h3>
+
+          <p>
+            Exclusive gaming bundle available
+            for a limited time.
+          </p>
+
+          <div class="price">
+            3,000 ALL
+          </div>
+
+          <button
+            class="buy-btn"
+            onclick="addToCart('Special Bundle')"
+          >
+            🛒 Add to Cart
+          </button>
+
+        </div>
+
+      </div>
+
+    </div>
+
+
+    <!-- FREE FIRE SECTION -->
+    <div class="freefire">
+
+      <h2>
+        🔥 <span>Tempesto</span> Free Fire
+      </h2>
+
+      <p>
+        Looking for gaming products, accounts,
+        diamonds or digital items?
+        Tempesto Shop is your gaming destination.
+      </p>
 
     </div>
 
   </section>
 
 
+  <!-- FOOTER -->
   <footer>
-    © 2026 Tempesto Shop — All Rights Reserved.
+
+    © 2026
+    <strong>Tempesto Shop</strong>
+    — All Rights Reserved.
+
   </footer>
 
 
+  <!-- JAVASCRIPT -->
   <script>
 
     let cartCount = 0;
 
-    function addToCart() {
+
+    function addToCart(productName) {
+
       cartCount++;
 
       document.getElementById("cartCount").textContent = cartCount;
 
-      alert("Product added to cart!");
+      alert(
+        "✅ " + productName + " was added to your cart!"
+      );
+
     }
 
 
-    document.getElementById("search").addEventListener("input", function() {
+    /* SEARCH */
 
-      const searchValue = this.value.toLowerCase();
+    document
+      .getElementById("search")
+      .addEventListener("input", function () {
 
-      const products = document.querySelectorAll(".product");
+        const searchValue =
+          this.value.toLowerCase();
 
-      products.forEach(function(product) {
+        const products =
+          document.querySelectorAll(".product");
 
-        const name = product.dataset.name.toLowerCase();
 
-        if (name.includes(searchValue)) {
-          product.style.display = "block";
-        } else {
-          product.style.display = "none";
-        }
+        products.forEach(function (product) {
+
+          const name =
+            product.dataset.name.toLowerCase();
+
+
+          if (name.includes(searchValue)) {
+
+            product.style.display = "block";
+
+          } else {
+
+            product.style.display = "none";
+
+          }
+
+        });
 
       });
-
-    });
 
   </script>
 
 </body>
-</html
+</html>
